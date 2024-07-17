@@ -1,41 +1,51 @@
 import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
 //create your first component
 const Home = () => {
-    const [color, setColor] = useState("btn-outline-success");
-	const [color1, setColor1] = useState("btn-outline-danger");
-	const [color2, setColor2] = useState("btn-outline-warning");
-	
-    
-    
+    const [activeColor, setActiveColor] = useState("");
+
     return (
         <div className="text-center">
-            <h1 className="text-center mt-5">semaforo</h1>
-			<div className="container flex-column bd-highlight mb-3">
-				<div className="row"></div>
-					<div className="col-lg-5"></div>
-					<button type="button" class={`col-10 col-lg-1 rounded-pill btn ${color}`}onClick={()=>{
-					color == "btn-outline-success" ? setColor("btn-success") : "btn-outline-success"
-					color == "btn-success" ? setColor("btn-outline-success") : setColor("btn-success")
-					}}><i className="fa-solid fa-lightbulb"></i></button>
-					<div className="col-lg-5"></div>
-				<div className="row"></div>	
-					<button type="button" class={`col-10 col-lg-1 rounded-pill btn ${color1}`}onClick={()=>{
-					color1 == "btn-outline-danger" ? setColor1("btn-danger") : "btn-outline-danger"
-					color1 == "btn-danger" ? setColor1("btn-outline-danger") : setColor1("btn-danger")
-					}}><i className="fa-solid fa-lightbulb"></i></button>
-				<div className="row"></div>		
-					<button type="button" class={`col-10 col-lg-1 rounded-pill btn ${color2}`}onClick={()=>{
-					color2 == "btn-outline-warning" ? setColor2("btn-warning") : "btn-outline-warning"
-					color2 == "btn-warning" ? setColor2("btn-outline-warning") : setColor2("btn-warning")
-					}}><i className="fa-solid fa-lightbulb"></i></button>
-				
-			</div>
+            <h1 className="text-center mt-5">Semáforo</h1>
+            <div className="container d-flex flex-column align-items-center mt-5">
+                <div className="bg-dark p-3" style={{ width: '100px', borderRadius: '10px' }}>
+                    <div className="row mb-3">
+                        <div className="col d-flex justify-content-center">
+                            <button
+                                type="button"
+                                className={`btn btn-success ${activeColor === "green" ? "rounded-circle" : ""}`}
+                                onClick={() => setActiveColor("green")}
+                            >
+                                <i className="fa-solid fa-lightbulb"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col d-flex justify-content-center">
+                            <button
+                                type="button"
+                                className={`btn btn-danger ${activeColor === "red" ? "rounded-circle" : ""}`}
+                                onClick={() => setActiveColor("red")}
+                            >
+                                <i className="fa-solid fa-lightbulb"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col d-flex justify-content-center">
+                            <button
+                                type="button"
+                                className={`btn btn-warning ${activeColor === "yellow" ? "rounded-circle" : ""}`}
+                                onClick={() => setActiveColor("yellow")}
+                            >
+                                <i className="fa-solid fa-lightbulb"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    ); 
+    );
 };
 
 export default Home;
